@@ -46,10 +46,10 @@ public class CreandoMarcos {
 		//Titulo de el marco
 		marco1.setTitle("Tree");
 		
-		Toolkit mipantalla = Toolkit.getDefaultToolkit();
+		Toolkit pantalla = Toolkit.getDefaultToolkit();
 		//Colocar Icono al Frame, del objeto de tipo Toolkit
 		
-		Image icono =  mipantalla.getImage("C:/Users/Jeampierre/Desktop/ProgramacionDiplomatura/Ejercicios Práctica/icono.png");
+		Image icono =  pantalla.getImage("C:/Users/Jeampierre/Desktop/ProgramacionDiplomatura/Ejercicios Práctica/icono.png");
 		marco1.setIconImage(icono);
 		
 	}
