@@ -1,6 +1,8 @@
 package graficos;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
@@ -52,11 +54,18 @@ public class CreandoMarcos {
 		Image icono =  pantalla.getImage("C:/Users/Jeampierre/Desktop/ProgramacionDiplomatura/Ejercicios Práctica/icono.png");
 		marco1.setIconImage(icono);
 		
+		
+		
+		
 	}
 
 }
 
-class miMarco extends JFrame{
+
+
+class miMarco extends JFrame {
+	
+	private JButton button1, button2, button3;
 	
 	
 	public miMarco() {
@@ -87,8 +96,13 @@ class miMarco extends JFrame{
 	 }*/
 	
 		
+
+		
+		
 	}
 	
+
+
 	
 	}
 

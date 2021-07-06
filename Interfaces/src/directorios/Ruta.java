@@ -1,14 +1,26 @@
 package directorios;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 
+
+
+import sun.dc.pr.PathFiller;
+
 public class Ruta {
-	public static void main(String[] arogs) {
-		//File archivo = new File("C:/Users/Jeampierre/Desktop/ProgramacionDiplomatura/NuevaCarperta");
+	public static void main(String[] arogs) throws FileNotFoundException {
+		FileReader archivo = new FileReader("C:/Users/Jeampierre/Desktop/ProgramacionDiplomatura/NuevaCarperta");
 		
-		//archivo.mkdir();
-		//System.out.println(archivo.getAbsolutePath());
-		//System.out.println(archivo.exists());
+		try {
+			archivo.read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(archivo);
 		
 		List lista2 = new LinkedList<>();
 		lista2.add("Uno");
