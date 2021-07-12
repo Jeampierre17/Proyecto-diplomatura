@@ -13,6 +13,7 @@ public void setColors(){
 }
 
 public getColors(){
+  return NameColors;
 }
 
 }
