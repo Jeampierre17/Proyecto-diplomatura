@@ -3,8 +3,8 @@ package graficos;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.FlowLayout;
+import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,11 +18,24 @@ public static void main (String[] args) {
 	Window btt = new Window();
 
 	btt.setVisible(true);
-	
+		btt.setTitle("Botones");
+		btt.setBounds(500, 100, 500, 300);
 
-	//close por defecto
+	//close por defecto, al cerrarla se cierran el resto de las ventanas
 	btt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
+	//Hacer que el tamaño del Frame se ajuste a los componentes(Label)
+	btt.pack();
+
+	//Creo segundo marco
+	
+	Window wd = new Window();
+	 wd.setTitle("Ventana Oyente");
+	 wd.setBounds(300, 300, 500, 300);
+	 wd.pack();
+	//Con DISPONE_ON_CLOSE  permite que no se cierren todas las ventanas al cerrar alguna
+	
+	wd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 }
 
 }
@@ -32,21 +45,49 @@ class Window extends JFrame{
 	
 
 	public Window() {
-		setTitle("Botones");
-		setBounds(400, 400, 550, 750);
+		//setTitle("Botones");
+		//setBounds(400, 400, 550, 750);
 		
 		setVisible(true);
 		
 		//Instaciamos la clase EventButtons que hereda de la clase JPanel 
 		// y se agreda como parametro el objeto de tipo JPanel
 		
-
 		EventsButtons evento = new EventsButtons();
 		
-
 		add(evento);
 		
+	
+		
+		//Agregamos eventos de tipo Window Listener 
+		/*Ventana oyenteWindow = new Ventana();
+		//Agregamos el objeto instanciado
+		  addWindowListener(oyenteWindow);*/
+		
+		//Simplificamos el codigo anadiendo una nueva intacia directa en el metodo addWindowListener
+		addWindowListener(new Ventana());
+		
+		
+		//Instacia para el cambio de estado del evento
+		CambioEstado newState = new CambioEstado();
+		addWindowStateListener(newState);
+
+		//Intacia para los eventos con Mouse 
+		
+		EventsMouse m =  new EventsMouse();
+		addMouseListener(m);
+	
+		//Creamos las dispocicion de los componentes
+		//Le damos como paramentro al constructor la ubicacion que queremos darle
+	 FlowLayout disposicion =   new FlowLayout(FlowLayout.CENTER);
+	 
+	 //usamos el objeto de tipo JPanel para instaciar la disposicion
+	
+	 evento.setLayout(disposicion);
+	 
+	 
 	}
+	
 
 	
 
@@ -111,4 +152,109 @@ class EventsButtons extends JPanel implements ActionListener{
 	
 
 }
+	
+	
+}
+
+class EventsMouse implements MouseListener{
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+System.out.println("Hiciste un click en las coordenadas X: "+ e.getX()+ " y en las coordenadas Y: "+ e.getY());		
+	System.out.println("Haz hecho "+e.getClickCount()+" click");
+	
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+System.out.println("Pasaste por un contenedor");		
+}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+System.out.println("Saliste de contededor");		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		System.out.println("Presionaste el botón del mouse");
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		System.out.println("Soltaste el botón del mouse");
+		
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+//Clase de Evento para cuando la ventana cambia de estado
+
+class CambioEstado implements WindowStateListener{
+
+	
+	
+	@Override
+	public void windowStateChanged(WindowEvent e) {
+		System.out.println("La Ventana ha cambiado de estado");			
+	
+		System.out.println(JFrame.MAXIMIZED_BOTH + e.getOldState());
+		
+	}
+	
+}
+  
+
+
+class Ventana implements WindowListener{
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+	 System.out.println("Ventana Activada");
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		System.out.println("La Ventana ha sido cerrada");
+		}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		System.out.println("Cerrando Ventana");	
+	}   
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		System.out.println("Ventana Desactivada");
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		System.out.println("Ventana Restaurada");
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		System.out.println("Ventana Minimizada");
+		
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		System.out.println("Ventana Abierta");
+	}
+	
+	
 }
