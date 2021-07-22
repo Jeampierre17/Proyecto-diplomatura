@@ -85,6 +85,15 @@ class Window extends JFrame{
 	
 	 evento.setLayout(disposicion);
 	 
+	 //instacia de eventos de MotioMouse
+	
+	 
+	 movimientoMouse motion = new movimientoMouse();
+	 
+	 
+	 addMouseMotionListener(motion);	 
+	 
+	
 	 
 	}
 	
@@ -99,7 +108,7 @@ class Window extends JFrame{
 class EventsButtons extends JPanel implements ActionListener{
 	
 	
-	
+		
 	
 		JButton b1 = new JButton("OK");
 		JButton b2 =  new JButton("Open");
@@ -135,6 +144,7 @@ class EventsButtons extends JPanel implements ActionListener{
 		b3.addActionListener(this);
 		}
 
+		
 		//Define la accion a ejecutar
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -194,6 +204,24 @@ System.out.println("Saliste de contededor");
 
 
 
+//Clase de Movimiento de Mouse : MotionMouseListener
+
+
+class movimientoMouse implements MouseMotionListener{
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		System.out.println("Estás arrastrando el mouse");		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		System.out.println("Estás moviendo el ratón");
+	}
+	
+	
+	
+}
 
 
 

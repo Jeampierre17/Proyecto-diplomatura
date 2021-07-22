@@ -3,9 +3,14 @@ package graficos;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class CreandoMarcos {
 
@@ -95,7 +100,11 @@ class miMarco extends JFrame {
 		 System.out.println(s);
 	 }*/
 	
-		
+		 //instaciar envetos de Teclado
+		 
+		 EventosTeclado teclado = new EventosTeclado();
+		 
+		 addKeyListener(teclado);
 
 		
 		
@@ -111,8 +120,11 @@ class Lamina1 extends JPanel{
 	//Creamos un marco para un Panel
 	public void paintComponent(Graphics g) {
 		
+	
 		
 		super.paintComponent(g);
+		
+		setLayout(null);
 		
 		g.setColor(Color.PINK.darker());
 		//dibuja un cuadrado
@@ -158,7 +170,112 @@ class Lamina1 extends JPanel{
 		//dibujar y Color del circulo
 		  g2.setPaint(Color.ORANGE.darker()	);
 		 g2.drawOval(180, 175, 155, 166);
-		
+		 //DIBUJAR UN MEDIO ARCO
+		 g2.drawArc(220, 200, 200, 200, 100, 100);
 		 
-		 }
+		 
+		 //creacion de poligano/ declarar un array
+		int pentagonox[] = {50, 50,  90, 90, 150, 90, 90};
+		int pentagonoy[]= {55, 85, 85, 110, 70, 30, 55};
+		 g2.setColor(Color.GREEN);
+		 g2.drawPolygon(pentagonox, pentagonoy, 7);
+		 
+		 //Creacion de recatgulo3d
+		 /*g2.setColor(Color.PINK);
+		 g2.draw3DRect(10, 10, 50, 100, true);*/
+		 
+		 
+		 //Instaciamos los cuadros de textos
+	
+		 Cuadro1 = new JTextField();
+		 
+		 Cuadro2= new JTextField();
+		 
+		 Cuadro1.setBounds(200, 40, 150, 20);
+		 
+		 Cuadro2.setBounds(200, 80, 150, 20);
+		 
+		 add(Cuadro1);
+		 add(Cuadro2);
+		 
+		 focus foco = new focus();
+		 Cuadro1.addFocusListener(foco);
+		 
+	}
+	
+	
+	//Creamos dos cuadro del Tipo cuadro de textos
+	JTextField Cuadro1;
+	JTextField Cuadro2;
+	
+	//Creamos Clase interna focus para acceder a los cuadros de textosd
+	
+	class focus implements FocusListener{
+
+		@Override
+		public void focusGained(FocusEvent e) {
+		
+			
+			 
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			// TODO Auto-generated method stub
+			String mail= Cuadro1.getText();
+			
+			boolean comprobacion= false;
+			
+			
+				//charAt() recorre caracter por caracter
+				//los datos de tipo char van con milla simple(ALT+39)
+				/*for(int i = 0; i< mail.length(); i++) {
+				while( mail.charAt(i) == '@') { 
+				comprobacion = true;
+				
+				
+				}
+		
+				}
+			if(e.) {
+				System.out.println("Correcto");
+			} else {
+				System.out.println("Incorrecto");
+			}*/
+			
+		} 
+			
+	}
+	
 }
+
+//Clase de Evento de Teclado
+
+class EventosTeclado implements KeyListener{
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int codigo = e.getKeyCode();
+		System.out.println("Haz precionado la tecla con el código: " + codigo);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		//System.out.println("Soltaste el Teclado");
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+		char letra = arg0.getKeyChar();
+		System.out.println("Haz precionado la letra: " + letra);
+	}
+
+}
+	
+	
+
+
