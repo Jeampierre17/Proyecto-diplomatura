@@ -1,4 +1,4 @@
-package graficos;
+package directorios;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

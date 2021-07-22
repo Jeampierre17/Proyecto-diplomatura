@@ -1,4 +1,4 @@
-package graficos;
+package directorios;
 
 import java.awt.Color;
 import java.awt.Event;

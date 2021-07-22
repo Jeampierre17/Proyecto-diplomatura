@@ -1,4 +1,4 @@
-package graficos;
+package directorios;
 
 
 import java.awt.Color;
@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Buttons{
@@ -95,6 +96,13 @@ class Window extends JFrame{
 	 
 	
 	 
+	 //Creacion de una Label y su Tool Tip
+	 /*
+	 	JLabel tip = new JLabel("Esto es una Estiqueta = Label");
+		
+		tip.setToolTipText("Esto es un Tool Tip Estiqueta Flotante del Label");
+		
+		add(tip);*/
 	}
 	
 
@@ -137,6 +145,9 @@ class EventsButtons extends JPanel implements ActionListener{
 		add(b1);
 		add(b2);
 		add(b3);
+	
+		
+		
 		
 	//desencadena evento teniendo como parametro la misma clase
 		b1.addActionListener(this);

@@ -1,4 +1,4 @@
-package graficos;
+package directorios;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,15 +19,15 @@ public class CreandoMarcos {
 
 		miMarco marco1 = new miMarco();
 		//1)Creamos un objeto de MenuBar
-		MenuBar mb =  new MenuBar();
+		JMenuBar mb =  new JMenuBar();
 		
 		//Inicializamos dentro de un contenedor de menu, como un frame(marco1)
-		marco1.setMenuBar(mb);
+		marco1.setJMenuBar(mb);
 		
 		//2)Creamos objetos menu
-		Menu m1 = new Menu("File");
-		Menu m2 =  new Menu("Edit");
-		Menu m3 =  new Menu("Help");
+		JMenu m1 = new JMenu("File");
+		JMenu m2 =  new JMenu("Edit");
+		JMenu m3 =  new JMenu("Help");
 		
 		//Agregamos objetos a la barra de menu
 		mb.add(m1);
@@ -36,10 +36,10 @@ public class CreandoMarcos {
 		
 		//Agregamos objetos de MenuItem
 		
-		MenuItem mi1 = new MenuItem("New");
-		MenuItem mi2 = new MenuItem("Save");
-		MenuItem mi3 = new MenuItem("Load");
-		MenuItem mi4 = new MenuItem("Quit");
+		JMenuItem mi1 = new JMenuItem("New");
+		JMenuItem mi2 = new JMenuItem("Save");
+		JMenuItem mi3 = new JMenuItem("Load");
+		JMenuItem mi4 = new JMenuItem("Quit");
 		
 		m1.add(mi1);
 		m1.add(mi2);

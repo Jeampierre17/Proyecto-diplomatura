@@ -1,7 +1,7 @@
 /**
  * 
  */
-package graficos;
+package directorios;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
