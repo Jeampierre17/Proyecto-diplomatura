@@ -2,6 +2,7 @@ package graficos;
 
 import java.awt.Color;
 import java.awt.Event;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -153,7 +154,7 @@ class PanelAction extends JPanel{
 			System.out.println("Nombre: "+getValue(Action.NAME) +" Descripción: "+ getValue(Action.SHORT_DESCRIPTION));
 		}
 		
-		
+		TextField tf;
 	}
 }
 
