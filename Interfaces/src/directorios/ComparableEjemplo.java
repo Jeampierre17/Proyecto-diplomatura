@@ -32,7 +32,7 @@ public class ComparableEjemplo implements Comparable<ComparableEjemplo>
 		ComparableEjemplo p3= new ComparableEjemplo("Sky");
 		ComparableEjemplo p4= new ComparableEjemplo("Jeampierre");
 		System.out.println(p1.compareTo(p2));
-		System.out.println(p3.compareTo(p4));
+		System.out.println(p4.compareTo(p3));
 	}
 }
 

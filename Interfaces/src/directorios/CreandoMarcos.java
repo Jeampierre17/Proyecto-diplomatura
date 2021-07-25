@@ -10,7 +10,6 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
-import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class CreandoMarcos {
 
@@ -18,6 +17,7 @@ public class CreandoMarcos {
 		// TODO Auto-generated method stub
 
 		miMarco marco1 = new miMarco();
+		
 		//1)Creamos un objeto de MenuBar
 		JMenuBar mb =  new JMenuBar();
 		
@@ -32,7 +32,7 @@ public class CreandoMarcos {
 		//Agregamos objetos a la barra de menu
 		mb.add(m1);
 		mb.add(m2);
-		mb.setHelpMenu(m3);
+		mb.add(m3);
 		
 		//Agregamos objetos de MenuItem
 		
@@ -229,19 +229,19 @@ class Lamina1 extends JPanel{
 			
 				//charAt() recorre caracter por caracter
 				//los datos de tipo char van con milla simple(ALT+39)
-				/*for(int i = 0; i< mail.length(); i++) {
-				while( mail.charAt(i) == '@') { 
+				for(int i = 0; i< mail.length(); i++) {
+				while( mail.charAt(i) == '@') 
 				comprobacion = true;
 				
 				
-				}
+				
 		
 				}
-			if(e.) {
+			if(comprobacion==true) {
 				System.out.println("Correcto");
 			} else {
 				System.out.println("Incorrecto");
-			}*/
+			}
 			
 		} 
 			
