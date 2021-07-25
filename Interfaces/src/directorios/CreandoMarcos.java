@@ -185,70 +185,77 @@ class Lamina1 extends JPanel{
 		 g2.draw3DRect(10, 10, 50, 100, true);*/
 		 
 		 
+		 estiqueta2 =  new JLabel();
+		 estiqueta2.setBounds(352, 45, 100, 10);
+		 add(estiqueta2);
+		   
+		 JLabel estiqueta1 = new JLabel("Email: ");
+		  estiqueta1.setBounds(160, 45, 50, 10);
+		 add(estiqueta1);
+		 
 		 //Instaciamos los cuadros de textos
 	
 		 Cuadro1 = new JTextField();
 		 
 		 Cuadro2= new JTextField();
 		 
+		 
 		 Cuadro1.setBounds(200, 40, 150, 20);
 		 
 		 Cuadro2.setBounds(200, 80, 150, 20);
 		 
+		
 		 add(Cuadro1);
+		 
 		 add(Cuadro2);
-		 
-		 focus foco = new focus();
-		 Cuadro1.addFocusListener(foco);
-		 
+		
+		 texto foco = new texto();
+		 Cuadro1.addActionListener(foco);
+		
+		
 	}
 	
+	public Lamina1() {
+		
+	}
 	
 	//Creamos dos cuadro del Tipo cuadro de textos
 	JTextField Cuadro1;
 	JTextField Cuadro2;
-	
+	// estiqueta1;
+	JLabel estiqueta2;
+
 	//Creamos Clase interna focus para acceder a los cuadros de textosd
 	
-	class focus implements FocusListener{
+	class texto implements ActionListener{
 
 		@Override
-		public void focusGained(FocusEvent e) {
-		
-			
-			 
-		}
-
-		@Override
-		public void focusLost(FocusEvent e) {
+		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			String mail= Cuadro1.getText();
-			
-			boolean comprobacion= false;
 			
 			
-				//charAt() recorre caracter por caracter
-				//los datos de tipo char van con milla simple(ALT+39)
-				for(int i = 0; i< mail.length(); i++) {
-				while( mail.charAt(i) == '@') 
-				comprobacion = true;
-				
-				
-				
-		
+			int correcto=0;
+			
+			String email=Cuadro1.getText().trim();
+			
+			for(int i=0; i <email.length(); i++) {
+				if(email.charAt(i)=='@') {
+					correcto++;
 				}
-			if(comprobacion==true) {
-				System.out.println("Correcto");
-			} else {
-				System.out.println("Incorrecto");
 			}
-			
-		} 
-			
+				
+			if(correcto==1) {
+				estiqueta2.setText("Mail correcto");
+				estiqueta2.paintImmediately(estiqueta2.getVisibleRect());
+			}else {
+				estiqueta2.setText("Mail incorrecto");
+				estiqueta2.paintImmediately(estiqueta2.getVisibleRect());
+			}
+		}
+		
+		
 	}
-	
 }
-
 //Clase de Evento de Teclado
 
 class EventosTeclado implements KeyListener{
