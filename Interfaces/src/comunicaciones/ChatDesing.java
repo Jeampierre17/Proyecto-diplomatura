@@ -14,12 +14,18 @@ import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.ScrollPaneConstants;
 
 import org.w3c.dom.views.AbstractView;
 
@@ -49,12 +55,16 @@ public class ChatDesing {
 	private JButton enviar;
 	private JButton salir;
 	private JComboBox nombresUsuario;
-	
+	private JScrollPane PanelTexto;
+	private JDialog jd;
+	private JFrame marco;
 	
 	public ChatDesing() {
 		
 		MensajeEntrante =  new JTextArea(10,50);
 		MensajeEnviar =  new JTextField(30);
+		
+		PanelTexto= new JScrollPane(MensajeEntrante, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		MensajeEnviar.setToolTipText("Escribe para iniciar el chat..");
 
 		MensajeEnviar.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -84,7 +94,7 @@ public class ChatDesing {
 	
 	
 	public void Marco(){
-		JFrame marco =  new JFrame("Chat");
+		marco =  new JFrame("Chat");
 		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		marco.getContentPane().setLayout(new BorderLayout());
@@ -142,6 +152,42 @@ public class ChatDesing {
 		p2.add(nombresUsuario, BorderLayout.SOUTH);
 				
 		//putValue(Action.SHORT_DESCRIPTION,  "Escribe tu mail");
+		
+		
+
+        // Crear la barra y el menú Archivo
+		
+		JMenuBar mb= new JMenuBar();
+		JMenu archivo = new JMenu("Archivo");
+		JMenuItem salir= new JMenuItem("Salir");
+		salir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);				
+			}
+		});
+		archivo.add(salir);
+		mb.add(archivo);
+		marco.setJMenuBar(mb);
+
+		
+		JMenu Ayuda = new JMenu("Ayuda");
+        JMenuItem jm = new JMenuItem("Acerca De...");
+        jm.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if ( jd == null ) {
+	                jd = new Dialogo(marco, "Acerca De...", true);
+	            }
+	            jd.setVisible(true);
+				
+			}
+		});
+        Ayuda.add(jm);
+        mb.add(Ayuda);
+        
 	}
 	
 	
@@ -169,6 +215,25 @@ public class ChatDesing {
 		}
 		
 		
+	}
+	
+	private class Dialogo extends JDialog implements ActionListener{
+		public Dialogo(JFrame padre, String titulo, boolean modal) {
+			super(padre, titulo, modal);
+			add(new JLabel("El Chat es una herrameinta que permite entablar conversaciones con otros clientes de char via un servidor de chat"), BorderLayout.NORTH);
+			JButton b = new JButton("Aceptar");
+			add(b, BorderLayout.SOUTH);
+			b.addActionListener(this);
+			pack();
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		      // Ocultar el cuadro de diálogo cuando se presiona Aceptar
+			 setVisible(false);
+		}
 	}
 }
 
