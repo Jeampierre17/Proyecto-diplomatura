@@ -1,1 +1,10 @@
-/graficos
+/.classpath
+/.project
+/Colors.class
+/Interfaces/
+/Tests/
+/UtilidadesDeCadenaTest.class
+/UtilidadesDeEnterosTest.class
+/UtilidadesDeTextoTest.class
+/directorios/
+/graficos/
