@@ -29,8 +29,10 @@ import javax.swing.ScrollPaneConstants;
 
 import org.w3c.dom.views.AbstractView;
 
-import com.sun.glass.events.WindowEvent;
+
 import com.sun.imageio.stream.StreamCloser.CloseAction;
+
+import sun.awt.TimedWindowEvent;
 
 import java.awt.event.KeyAdapter;
 import javax.swing.SwingConstants;
@@ -238,7 +240,7 @@ public class ChatDesing {
 }
 
 class ManejadorCerrar extends WindowAdapter {
-    public void windowClosing(WindowEvent e) {
+    public void windowClosing(TimedWindowEvent e) {
         System.exit(0);
     }
 }

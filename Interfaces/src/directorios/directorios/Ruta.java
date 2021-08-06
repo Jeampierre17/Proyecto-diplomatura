@@ -1,4 +1,4 @@
-package directorios;
+package directorios.directorios;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,7 +8,6 @@ import java.util.*;
 
 
 
-import sun.dc.pr.PathFiller;
 
 public class Ruta {
 	public static void main(String[] arogs) throws FileNotFoundException {

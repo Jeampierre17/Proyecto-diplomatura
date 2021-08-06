@@ -1,18 +1,16 @@
-package comunicaciones;
+package Interfaces.test.comunicaciones;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.fail;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
 
 class CalculadoraTest {
 
-	@BeforeEach
+	@Before
 	void setUp() throws Exception {
 	}
 
-	@AfterEach
+	@After
 	void tearDown() throws Exception {
 	}
 
