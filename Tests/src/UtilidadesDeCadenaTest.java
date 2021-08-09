@@ -1,6 +1,7 @@
 
-import static org.junit.*;
 
+
+import org.junit.*;
 import org.junit.Test;
 
 
@@ -8,12 +9,12 @@ class UtilidadesDeCadenaTest {
 
 	private UtilidadesDeCadena u;
 	
-	@BeforeEach
+	@Before
 	void setUp() throws Exception {
 		u = new UtilidadesDeCadena();
 	}
 
-	@AfterEach
+	@After
 	void tearDown() throws Exception {
 		u =null;
 	}

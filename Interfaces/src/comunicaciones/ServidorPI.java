@@ -2,6 +2,7 @@ package comunicaciones;
 import java.awt.BorderLayout;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.swing.*;
 
@@ -54,12 +55,48 @@ class MarcoServidor extends JFrame implements Runnable{
 			
 			ServerSocket servidor =  new ServerSocket(9999);
 
+			String nick, ip, mensaje;
+			
+			paqueteDeEnvio paquete;
+			
+			
 			//con un bucle while true nuestro codigo se ejecuta infinitamente
 			while(true) {
 			
 			
 			//acepta los metodos que vienen desde el exterior
 			Socket misocket= servidor.accept();
+			
+			// --Recibir Objeto
+			
+			ObjectInputStream datos = new ObjectInputStream(misocket.getInputStream());
+			
+			paquete =  (paqueteDeEnvio) datos.readObject();
+			
+			
+			//obtener del paquete los datos recibidos
+			
+			ip = paquete.getIp();
+			
+			nick =  paquete.getNick();
+			
+			mensaje = paquete.getMensaje();
+			
+			//agregar al TextArea
+			
+			parrafo.append("\n"+ nick+ ": "+mensaje+ " para: "+ ip);
+			
+			
+			
+			
+			
+			//cerramos socket
+			
+			misocket.close();
+			
+			
+			
+			/* -- Recibir texto
 			
 			DataInputStream entrada =  new DataInputStream(misocket.getInputStream());
 			
@@ -68,11 +105,17 @@ class MarcoServidor extends JFrame implements Runnable{
 			// append agrega el texto dato
 			parrafo.append("\n"+texto);
 			
+			
 			misocket.close();
+			*/
+			
 			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Bloque catch generado automáticamente
 			e.printStackTrace();
 		}
 	}
