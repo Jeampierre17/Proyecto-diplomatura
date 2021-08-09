@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.*;
 
@@ -57,7 +58,7 @@ class MarcoServidor extends JFrame implements Runnable{
 
 			String nick, ip, mensaje;
 			
-			paqueteDeEnvio paquete;
+			paqueteDeEnvio paqueteRecibido;
 			
 			
 			//con un bucle while true nuestro codigo se ejecuta infinitamente
@@ -71,26 +72,36 @@ class MarcoServidor extends JFrame implements Runnable{
 			
 			ObjectInputStream datos = new ObjectInputStream(misocket.getInputStream());
 			
-			paquete =  (paqueteDeEnvio) datos.readObject();
+			paqueteRecibido =  (paqueteDeEnvio) datos.readObject();
 			
 			
 			//obtener del paquete los datos recibidos
 			
-			ip = paquete.getIp();
+			ip = paqueteRecibido.getIp();
 			
-			nick =  paquete.getNick();
+			nick =  paqueteRecibido.getNick();
 			
-			mensaje = paquete.getMensaje();
+			mensaje = paqueteRecibido.getMensaje();
 			
 			//agregar al TextArea
 			
 			parrafo.append("\n"+ nick+ ": "+mensaje+ " para: "+ ip);
 			
+			//Creamos Socker para enviar la informacion al destinatarip
+			Socket envio=  new Socket (ip, 9090);
+			
+			//enviamos paquete
+			ObjectOutputStream paqueteEnviar = new ObjectOutputStream(envio.getOutputStream());
 			
 			
+			paqueteEnviar.writeObject(paqueteRecibido);
 			
 			
 			//cerramos socket
+			
+			paqueteEnviar.close();
+			
+			envio.close();
 			
 			misocket.close();
 			

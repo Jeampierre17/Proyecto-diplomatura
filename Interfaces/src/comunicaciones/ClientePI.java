@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import sun.jvm.hotspot.ui.table.SortHeaderCellRenderer;
+
 public class ClientePI {
 
 	public static void main(String[] args) {
@@ -40,8 +42,8 @@ class MarcoCliente extends JFrame {
 	
 	}
 	
-	
-	class LaminaMarcoCliente extends JPanel{
+	//implemnetamos la interfaz Runnable para posibilitar varios subprocesos Threands
+	class LaminaMarcoCliente extends JPanel implements Runnable{
 		
 		
 		private JTextField campo1, nick, ip;
@@ -80,7 +82,11 @@ class MarcoCliente extends JFrame {
 			
 			add(boton1);
 			
-		
+		//Ponemos en funcionamiento el Threads dentro de la misma clase
+			
+			Thread hilo = new Thread(this);
+			
+			hilo.start();
 			
 		}
 		
@@ -122,6 +128,8 @@ class MarcoCliente extends JFrame {
 					//escribir soble el flujo de salida el paquete a enviar
 					
 					paquete.writeObject(datos);
+				
+					
 					
 					//cerrar el socket
 					mysocket.close();
@@ -145,6 +153,44 @@ class MarcoCliente extends JFrame {
 			}
 			
 		
+		}
+
+
+		@Override
+		public void run() {
+			
+			
+			
+			
+		try {
+			//recibe el puerto para recibir ServerSockert
+			ServerSocket recibir = new ServerSocket(9090);
+			
+			Socket cliente;
+			
+			paqueteDeEnvio paqueteRecibido;
+			
+			
+			while(true) {
+				//aceptamos el serversocket en el canal donde viajan los datos
+				cliente= recibir.accept();
+				
+				ObjectInputStream flujoDeEntrada = new ObjectInputStream(cliente.getInputStream());
+
+				paqueteRecibido= (paqueteDeEnvio) flujoDeEntrada.readObject();
+			
+			//escrbir en el TextArea
+				
+				campochat.append("\n"+paqueteRecibido.getNick()+": " + paqueteRecibido.getMensaje());
+			
+			}
+			
+			
+			
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			
+		}
 		}
 	}
 
