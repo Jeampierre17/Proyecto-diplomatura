@@ -56,7 +56,7 @@ public class ChatDesing {
 	private JTextField MensajeEnviar;
 	private JButton enviar;
 	private JButton salir;
-	private JComboBox nombresUsuario;
+	private JComboBox<String> nombresUsuario;
 	private JScrollPane PanelTexto;
 	private JDialog jd;
 	private JFrame marco;
@@ -86,6 +86,7 @@ public class ChatDesing {
 		
 		enviar =  new JButton("Enviar");
 		salir = new JButton("Salir");
+		//evento de mensaje salir
 		salir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent s) {
 			System.exit(0);
@@ -141,7 +142,7 @@ public class ChatDesing {
 		//agregar ComboBox
 		
 		
-		nombresUsuario = new JComboBox();
+		nombresUsuario = new JComboBox<String>();
 		nombresUsuario.setFont(new Font("Arial", Font.ITALIC, 9));
 		
 		nombresUsuario.addItem("Pedro Ramirez, 1337dud3, Flash");

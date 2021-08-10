@@ -114,6 +114,46 @@ class miMarco extends JFrame {
 
 class Lamina1 extends JPanel{
 	
+	public Lamina1() {
+
+		 //segunda lamina
+	JPanel laminaSuperior = new JPanel();
+		 
+	 laminaSuperior.setLayout(new GridLayout(2,2));
+	
+	 add(laminaSuperior, BorderLayout.NORTH);
+
+	 
+	 JLabel estiqueta1 = new JLabel("Email: ");
+	 // estiqueta1.setBounds(160, 45, 50, 10);
+	 laminaSuperior.add(estiqueta1);
+	 
+	 		 estiqueta2 =  new JLabel("Contraseña");
+	// estiqueta2.setBounds(352, 45, 100, 10);
+	laminaSuperior.add(estiqueta2);
+	   
+	
+	
+	
+	 //Instaciamos los cuadros de textos
+
+	 Cuadro1 = new JTextField(15);
+	 
+	 Cuadro2= new JTextField(15);
+	 
+	 
+
+	 
+	
+	 laminaSuperior.add(Cuadro1);
+	 
+	 laminaSuperior.add(Cuadro2);
+	
+			
+		
+		
+	}
+
 	//Creamos un marco para un Panel
 	public void paintComponent(Graphics g) {
 		
@@ -182,30 +222,9 @@ class Lamina1 extends JPanel{
 		 g2.draw3DRect(10, 10, 50, 100, true);*/
 		 
 		 
-		 estiqueta2 =  new JLabel("");
-		 estiqueta2.setBounds(352, 45, 100, 10);
-		 add(estiqueta2);
-		   
-		 JLabel estiqueta1 = new JLabel("Email: ");
-		  estiqueta1.setBounds(160, 45, 50, 10);
-		 add(estiqueta1);
-		 
-		 //Instaciamos los cuadros de textos
-	
-		 Cuadro1 = new JTextField();
-		 
-		 Cuadro2= new JTextField();
 		 
 		 
-		 Cuadro1.setBounds(200, 40, 150, 20);
 		 
-		 Cuadro2.setBounds(200, 80, 150, 20);
-		 
-		
-		 add(Cuadro1);
-		 
-		 add(Cuadro2);
-		
 		 texto foco = new texto();
 		 Cuadro1.addActionListener(foco);
 		
@@ -216,6 +235,7 @@ class Lamina1 extends JPanel{
 	//Creamos dos cuadro del Tipo cuadro de textos
 	JTextField Cuadro1;
 	JTextField Cuadro2;
+	
 	// estiqueta1;
 	JLabel estiqueta2;
 
@@ -230,7 +250,7 @@ class Lamina1 extends JPanel{
 			
 			int correcto=0;
 			
-			String email=Cuadro1.getText().trim();
+			String email= Cuadro1.getText().trim();
 			
 			for(int i=0; i <email.length(); i++) {
 				while(email.charAt(i)=='@') {
@@ -239,15 +259,16 @@ class Lamina1 extends JPanel{
 			}
 				
 			if(correcto==1) {
-				estiqueta2.setText("Mail correcto");
+				Cuadro1.setText("Mail correcto");
 				
 			}else {
-				estiqueta2.setText("Mail incorrecto");
+				Cuadro1.setText("Mail incorrecto");
+			}
 			}
 		}
 		
 		
-	}
+	
 }
 //Clase de Evento de Teclado
 

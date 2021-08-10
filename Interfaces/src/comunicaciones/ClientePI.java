@@ -139,6 +139,7 @@ class MarcoCliente extends JFrame {
 					 * 
 					//DataOS para salida de datos toma como parametro en el contructor
 					//el socket sobre la cual va hacer el flujo de datos
+					
 					DataOutputStream salida = new DataOutputStream(mysocket.getOutputStream());
 					
 					
