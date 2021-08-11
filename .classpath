@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="Interfaces/src/|Tests/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="MVC"/>
 	<classpathentry kind="src" path="Interfaces/src"/>
 	<classpathentry kind="src" path="Tests/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
