@@ -30,7 +30,7 @@ public class Modelo {
     public void setMensaje(String mensaje) {
         System.out.println("Modelo: setMensaje() ");
         this.mensaje = mensaje;
-        this.disparaEventoDeCambioEnElModelo(mensaje);
+        disparaEventoDeCambioEnElModelo(mensaje);
 		// ** 1 Acción Requerida: falta una línea de código
 		// ** Pista 1: debe informar a todas las vistas que 
 		// ** el modelo hacambiado
@@ -42,7 +42,7 @@ public class Modelo {
     public void setClima(String clima) {
         System.out.println("Modelo: setClima() ");
         this.clima = clima;
-        this.disparaEventoDeCambioEnElModelo(clima);
+        disparaEventoDeCambioEnElModelo(clima);
 		// ** 2 Acción Requerida: falta una línea de código
 		// ** Pista 1: debe informar a todas las vistas que 
 		// ** el modelo ha cambiado

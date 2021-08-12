@@ -1,26 +1,28 @@
 
 
 
+import static org.junit.Assert.*;
+
 import org.junit.*;
 import org.junit.Test;
 
 
-class UtilidadesDeCadenaTest {
+public class UtilidadesDeCadenaTest {
 
 	private UtilidadesDeCadena u;
 	
 	@Before
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		u = new UtilidadesDeCadena();
 	}
 
 	@After
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 		u =null;
 	}
 
 	@Test
-	void testConcatenar() {
+	public void testConcatenar() {
 		String completo= "Buen día";
 		String p1= "Buen";
 		String p2 = "día";
@@ -28,14 +30,14 @@ class UtilidadesDeCadenaTest {
 	}
 
 	@Test
-	void testPrimerCaracter() {
+	public void testPrimerCaracter() {
 	String completo = "Buen día";
 	char c= u.primerCaracter(completo);
 	assertEquals(c, 'B');
 	}
 
 	@Test
-	void testUltimoCaracter() {
+	public void testUltimoCaracter() {
 		String completo = "Buen día";
 		char c=  u.ultimoCaracter(completo);
 		assertEquals('a', c);

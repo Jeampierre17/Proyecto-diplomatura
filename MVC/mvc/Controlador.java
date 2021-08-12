@@ -67,7 +67,7 @@ public class Controlador {
     public void procesarActualizarClima(String clima) {
         System.out.println("Controlador " + idControlador +
                 ": procesarActualizarClima() ");
-        this.procesarActualizarClima(clima);
+        procesarActualizarClima(clima);
 		// ** 5 Acción Requerida: falta una línea de código
 		// ** Pista 1: El Controlador debe actualizar el modelo con la nueva
 		// ** información del clima almacenado en el parámetro clima
